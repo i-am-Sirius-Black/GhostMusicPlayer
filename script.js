@@ -43,8 +43,9 @@ mainFunction();
 
 allSongs.addEventListener("click",(event)=>{
         selectedSong = event.target.id
-        play.innerHTML = `<i class="ri-pause-fill"></i>`
         mainFunction();
+        play.innerHTML = `<i class="ri-pause-fill"></i>`
+        flag=1
         audio.play()
 })
 
@@ -62,4 +63,26 @@ play.addEventListener("click",()=>{
         flag=0
     }
     
+})
+
+forward.addEventListener("click",()=>{
+    backward.style.opacity=1
+    if(selectedSong < arr.length-1){
+        selectedSong++
+        mainFunction()
+        audio.play()
+    }else{
+        forward.style.opacity=0.4
+    }
+})
+
+backward.addEventListener("click",()=>{
+    forward.style.opacity=1
+    if(selectedSong > 0){
+        selectedSong--
+        mainFunction()
+        audio.play()
+    }else{
+        backward.style.opacity=0.4
+    }
 })
